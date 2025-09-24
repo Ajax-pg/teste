@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NONE</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.11.1/brython.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.11.1/brython_stdlib.min.js"></script>
+   <script src=".js"></script>
+
+    <style>
+.base{
+position:relative;
+top:25%;
+left:25%;
+width:205px;
+height:400px;
+border:1px solid #ccc;
+border-radius:10px;
+box-shadow: 1px  1px  15px #000;
+padding: 15px;
+
+}.numbers{
+gap: 5px 10px;
+width:200px;
+height:200px;
+padding: 20px;
+
+}input{
+flex: 1;
+border-radius:15px;
+border:1px solid #ccc;
+background-color:#030310;
+color: #fff;
+font-family: Arial, Helvetica, sans-serif;
+width:195px;
+min-width:195px;
+height:40px;
+font-size:20px;
+text-align: right;
+
+}button{
+width:40px;
+height:40px;
+border:1px solid #ccc;
+background-color:#fff;
+border-radius:5px;
+
+}
+</style>
+</head>
+<body onload="brython()">
+<h1  id="" class="" type="">Calculadora</h1>
+<br>
+<div  id="" class="base" type="">
+    <input type="text" name="" placeholder="Terminal" value=""  id="TERM" class="">
+    <div  id="" class="numbers" type="">
+    <div  id="" class="ope" type="">
+    <button  id="SUM" class="" type="button" onclick="">+</button>
+    <button  id="MIN" class="" type="button" onclick="">-</button>
+    <button  id="DIV" class="" type="button" onclick="">/</button>
+    <button  id="IG" class="" type="button" onclick="">=</button>
+    <button  id="C" class="" type="button" onclick="">C</button>
+    <button  id="DEL" class="" type="button" onclick="">⌫</button></div><br>
+    <button  id="BT1" class="" type="button" onclick="">1</button>
+    <button  id="BT2" class="" type="button" onclick="">2</button>
+    <button  id="BT3" class="" type="button" onclick="">3</button><br>
+    <button  id="BT4" class="" type="button" onclick="">4</button>
+    <button  id="BT5" class="" type="button" onclick="">5</button>
+    <button  id="BT6" class="" type="button" onclick="">6</button><br>
+    <button  id="BT7" class="" type="button" onclick="">7</button>
+    <button  id="BT8" class="" type="button" onclick="">8</button>
+    <button  id="BT9" class="" type="button" onclick="">9</button><br>
+    <button style="
+width:127px;
+height:40px;
+
+" id="BT0" class="" type="button" onclick="">0</button></div>
+    </div>
+
+<script type="text/python">
+
+from browser import document, html, bind, alert, console
+import browser
+from browser import timer
+from browser import ajax, aio
+from browser import local_storage, session_storage, object_storage
+from browser import websocket, worker
+from browser import webcomponent, markdown, template, svg
+from browser.widgets import dialog, menu
+from browser.widgets.dialog import InfoDialog
+from browser import window
+
+bt1 = document['BT1']
+bt2 = document['BT2']
+bt3 = document['BT3']
+bt4 = document['BT4']
+bt5 = document['BT5']
+bt6 = document['BT6']
+bt7 = document['BT7']
+bt8 = document['BT8']
+bt9 = document['BT9']
+bt0 = document['BT0']
+
+sum = document['SUM']
+min = document['MIN']
+divs = document['DIV']
+ig = document['IG']
+btc = document['C']
+btdel = document['DEL']
+
+term = document['TERM']
+
+@bind(bt1, "click")
+def _(event):
+    term.value += '1'
+
+@bind(bt2, "click")
+def _(event):
+    term.value += '2'
+    
+@bind(bt3, "click")
+def _(event):
+    term.value += '3'
+    
+@bind(bt4, "click")
+def _(event):
+    term.value += '4'
+    
+@bind(bt5, "click")
+def _(event):
+    term.value += '5'
+    
+@bind(bt6, "click")
+def _(event):
+    term.value += '6'
+    
+@bind(bt7, "click")
+def _(event):
+    term.value += '7'
+    
+@bind(bt8, "click")
+def _(event):
+    term.value += '8'
+    
+@bind(bt9, "click")
+def _(event):
+    term.value += '9'
+
+@bind(bt0, "click")
+def _(event):
+    term.value += '0'
+    
+@bind(sum, "click")
+def _(event):
+    term.value += ' + '
+    
+@bind(min, "click")
+def _(event):
+    term.value += ' - '
+
+@bind(divs, "click")
+def _(event):
+    term.value += ' / '
+    
+@bind(ig, "click")
+def _(event):
+    try:
+        term.value = str(eval(term.value))
+    except:
+        term.value = "Erro"
+        
+@bind(btc, "click")
+def _(event):
+    term.value = ''
+    
+@bind(btdel, "click")
+def _(event):
+    term.value = term.value.replace(term.value[-1], '')
+</script>
+
+</body>
+</html>
